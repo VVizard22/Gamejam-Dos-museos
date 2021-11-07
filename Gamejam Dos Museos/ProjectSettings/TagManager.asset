@@ -46,3 +46,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Mastil
+    uniqueID: 463052541
+    locked: 0
+  - name: Riel
+    uniqueID: 233756921
+    locked: 0
+  - name: Manija
+    uniqueID: 1061695287
+    locked: 0
+  - name: Manivela
+    uniqueID: 595476829
+    locked: 0

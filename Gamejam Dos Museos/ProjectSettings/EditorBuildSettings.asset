@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/Start Scene Mauro.unity
+    guid: 61c2f5d69235c3f4690053a18566b516
+  - enabled: 1
+    path: Assets/Scenes/Juego.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Victory Screen.unity
+    guid: c35ec084e3e10fb40bee352f821731cb
+  - enabled: 1
+    path: Assets/Scenes/Creditos.unity
+    guid: d68ceb01abd6c3d49ae1cc0f0d965215
   m_configObjects: {}

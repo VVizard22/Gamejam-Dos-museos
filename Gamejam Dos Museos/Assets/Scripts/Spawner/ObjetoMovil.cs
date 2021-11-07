@@ -10,6 +10,7 @@ public class ObjetoMovil : MonoBehaviour
     private Rigidbody2D rb;
     public GameObject fueGeneradoPor;
     public int posEnArray;
+    public bool fuePescado;
 
     private bool _grabbed;
     GameObject _gancho;
@@ -18,6 +19,7 @@ public class ObjetoMovil : MonoBehaviour
     {
         rb = this.GetComponent<Rigidbody2D>();
         rb.velocity = new Vector2(-speed, 0);
+        fuePescado = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -39,7 +41,7 @@ public class ObjetoMovil : MonoBehaviour
 
     private void OnBecameInvisible()
     {
-        if (CompareTag("Trofeo"))
+        if (CompareTag("Trofeo") && !_grabbed)
         {
             fueGeneradoPor.GetComponent<Generador>().reincorporarCosa(posEnArray);
         }

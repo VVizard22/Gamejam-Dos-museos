@@ -168,6 +168,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  _puntos: -15
+  _puntos: -5
   fueGeneradoPor: {fileID: 0}
   posEnArray: 0
