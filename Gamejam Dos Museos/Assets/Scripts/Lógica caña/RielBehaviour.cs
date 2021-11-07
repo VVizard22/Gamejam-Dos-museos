@@ -7,10 +7,12 @@ using UnityEngine;
 public class RielBehaviour : MonoBehaviour
 {
     [SerializeField] GameObject _riel;
+    [SerializeField] GameObject _manija;
     [SerializeField] BaitBehaviour _anzuelo;
     
     private Vector2 _centerPosition;
     private Vector2 _lastPosition;
+
     private float _distanceToCenter;
 
     private bool _mouseOver;
@@ -23,9 +25,9 @@ public class RielBehaviour : MonoBehaviour
     void Awake()
     {
         //transfor..position devuelve la posicion del centro del riel
-        _centerPosition = _riel.transform.position;
+        _centerPosition = _riel.transform.localPosition;
 
-        _lastPosition = transform.position;
+        _lastPosition = transform.localPosition;
 
         /*Se cashea la camara principal del juego para ya tener una referencia
            y no necesitar correr un algoritmo de busqueda cada vez*/
@@ -33,7 +35,7 @@ public class RielBehaviour : MonoBehaviour
 
         _mouseOver = false;
         _isDragging = false;
-        Vector2.Distance(_centerPosition, transform.position);
+        _distanceToCenter = Vector2.Distance(_centerPosition, _lastPosition);
     }
 
     // Update is called once per frame
@@ -58,7 +60,18 @@ public class RielBehaviour : MonoBehaviour
                 _directionVector.Normalize();
                 CalculateDirection(_directionVector);
 
-                transform.position = _centerPosition - _directionVector;
+                transform.localPosition = _centerPosition - _directionVector * _distanceToCenter;
+
+                Vector3 target = transform.position;
+                target.z = 0f;
+
+                target.x -= _manija.transform.position.x;
+                target.y -= _manija.transform.position.y;
+
+                float angle = Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg;
+
+
+                _manija.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
                 if (_movement != 0)
                     _anzuelo.MoveBait(_movement);
             }
