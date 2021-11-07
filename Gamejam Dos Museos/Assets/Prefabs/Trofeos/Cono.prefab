@@ -150,3 +150,4 @@ MonoBehaviour:
   _puntos: 20
   fueGeneradoPor: {fileID: 0}
   posEnArray: 0
+  fuePescado: 0

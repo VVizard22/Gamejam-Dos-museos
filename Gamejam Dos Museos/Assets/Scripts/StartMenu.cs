@@ -10,9 +10,14 @@ public class StartMenu : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    public void StartGamePosta()
+    {
+        SceneManager.LoadScene(2);
+    }
+
     public void Creditos()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(4);
     }
 
     public void VolverMenu()

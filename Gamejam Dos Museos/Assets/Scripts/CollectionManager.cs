@@ -9,12 +9,15 @@ public class CollectionManager : MonoBehaviour
     [SerializeField] BaitBehaviour _gancho = null;
     [SerializeField] private Text textoPuntaje;
     [SerializeField] private Text textoObjetos;
+    [SerializeField] private AudioSource sonidoBasura;
+    [SerializeField] private AudioSource sonidoPez;
+    [SerializeField] private AudioSource sonidoTesoro;
 
     private string[] _frasesPeces = new string[3];
 
     private int _cantPeces;
     private int objetosRecuperados;
-    private int _score = 0;
+    private int _score;
 
     private void Start()
     {
@@ -23,7 +26,8 @@ public class CollectionManager : MonoBehaviour
         _frasesPeces[2] = "Wow. ¿Te dicen buque chino? Porque estás arrasando con la población marítima.";
 
         objetosRecuperados = 0;
-        textoPuntaje.text = "Puntaje: " + _score;
+        PlayerStats.set(0);
+        textoPuntaje.text = "Puntaje: " + PlayerStats.Points;
         textoObjetos.text = "Objetos recuperados: " + objetosRecuperados + "/7";
     }
 
@@ -37,25 +41,33 @@ public class CollectionManager : MonoBehaviour
                 if (toCollect.CompareTag("Trofeo"))
                 {
                     Debug.Log("Lore de: " + toCollect.name);
+
+                    sonidoTesoro.Play();
+
                     objetosRecuperados++;
+
                     textoObjetos.text = "Objetos recuperados: " + objetosRecuperados + "/7";
                     if (objetosRecuperados == 7)
                     {
+
                         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                     }
                 }
-                else if (toCollect.CompareTag("Pescado") && _cantPeces < _frasesPeces.Length)
+                else if (toCollect.CompareTag("Basura"))
                 {
-                    Debug.Log(_frasesPeces[_cantPeces]);
-                    _cantPeces++;
+                    sonidoBasura.Play();
                 }
-                _score += toCollect.GetComponent<ObjetoMovil>().GetPuntos();
+                else if (toCollect.CompareTag("Pescado"))
+                {
+                    sonidoPez.Play();
+                }
+                PlayerStats.sumarPuntos(toCollect.GetComponent<ObjetoMovil>().GetPuntos());
                 Destroy(toCollect);
                 _gancho.setGrabbed(null);
             }
         }
 
-        textoPuntaje.text = "Puntaje: " + _score;
+        textoPuntaje.text = "Puntaje: " + PlayerStats.Points;
     }
 
 }

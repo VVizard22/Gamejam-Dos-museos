@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2126301375040576184}
   m_Layer: 0
   m_Name: Bolsa
-  m_TagString: Untagged
+  m_TagString: Basura
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,6 +148,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.8
   _puntos: 1
-  description: 
   fueGeneradoPor: {fileID: 0}
   posEnArray: 0
+  fuePescado: 0

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8164610992183850234}
   m_Layer: 0
   m_Name: Botella
-  m_TagString: Untagged
+  m_TagString: Basura
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,6 +148,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1.5
   _puntos: 2
-  description: 
   fueGeneradoPor: {fileID: 0}
   posEnArray: 0
+  fuePescado: 0
