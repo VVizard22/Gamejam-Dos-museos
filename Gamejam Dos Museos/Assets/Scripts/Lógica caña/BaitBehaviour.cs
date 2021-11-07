@@ -6,7 +6,8 @@ public class BaitBehaviour : MonoBehaviour
 {
     [SerializeField] float _impulse;
     private Rigidbody2D _rigidbody;
-    private Vector2 _lastDirectionImpulse;
+
+    public GameObject _grabbed { get; private set; } = null;
 
     void Start()
     {
@@ -16,8 +17,18 @@ public class BaitBehaviour : MonoBehaviour
     public void MoveBait(int direction)
     {
         Vector2 _forceDirection = new Vector2(0, direction);
-        _lastDirectionImpulse = _forceDirection;
         _rigidbody.position += new Vector2(0, direction * _impulse * Time.deltaTime);
     }
 
+    public bool TryToCatch(GameObject target)
+    {
+        bool r = false;
+        if(_grabbed == null){
+            _grabbed = target;
+            r = true;
+        }
+        return r;
+    }
+
+    public void setGrabbed(GameObject g) => _grabbed = g;
 }
